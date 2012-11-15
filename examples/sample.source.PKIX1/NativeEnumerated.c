@@ -1,0 +1,1 @@
+../../skeletons/NativeEnumerated.c

@@ -1,0 +1,1 @@
+../../skeletons/BMPString.h
