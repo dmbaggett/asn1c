@@ -378,7 +378,7 @@ Certificate.c: ../sample.makefile.regen ../rfc5280-*.asn1
 
 regen-makefile:
 	ASN1CMDOPTS="" \
-	ASN1MODULES="../rfc5280-*.asn1" \
+	ASN1MODULES="../rfc5280-*.asn1 ../rfc3447-*.asn1" \
 	ASN1PDU=Certificate \
 	PROGNAME=x509dump \
 	../sample.makefile.regen

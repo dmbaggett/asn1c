@@ -14,6 +14,10 @@ ASN1_SOURCE_3 = rfc4511.txt
 ASN1_FILES_3 =				\
 	rfc4511-Lightweight-Directory-Access-Protocol-V3.asn1
 
+ASN1_SOURCE_4 = rfc3447.txt
+ASN1_FILES_4 =				\
+	rfc3447-PKCS-1.asn1
+
 all: $(ASN1_FILES_1) $(ASN1_FILES_2) $(ASN1_FILES_3)
 
 $(ASN1_FILES_1): crfc2asn1.pl $(ASN1_SOURCE_1)
@@ -35,6 +39,7 @@ EXTRA_DIST = $(srcdir)/rfc*.txt					\
 	$(srcdir)/sample.source.RRC				\
 	$(srcdir)/sample.source.TAP3				\
 	$(srcdir)/sample.source.PKIX1				\
+	$(srcdir)/sample.source.PKCS1				\
 	$(srcdir)/sample.makefile.regen
 
 dist-hook:
