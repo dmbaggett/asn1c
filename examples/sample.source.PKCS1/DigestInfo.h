@@ -11,7 +11,7 @@
 #include <asn_application.h>
 
 /* Including external dependencies */
-#include "AlgorithmIdentifier.h"
+#include "PKCS1AlgorithmIdentifier.h"
 #include <OCTET_STRING.h>
 #include <constr_SEQUENCE.h>
 
@@ -21,7 +21,7 @@ extern "C" {
 
 /* DigestInfo */
 typedef struct DigestInfo {
-	AlgorithmIdentifier_120P0_t	 digestAlgorithm;
+	PKCS1AlgorithmIdentifier_120P0_t	 digestAlgorithm;
 	OCTET_STRING_t	 digest;
 	
 	/* Context for parsing across buffer boundaries */

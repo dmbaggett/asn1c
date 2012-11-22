@@ -37,31 +37,31 @@ pkcs-1    OBJECT IDENTIFIER ::= {
 }
 
 --
--- When rsaEncryption is used in an AlgorithmIdentifier the parameters 
+-- When rsaEncryption is used in an PKCS1AlgorithmIdentifier the parameters 
 -- MUST be present and MUST be NULL.
 --
 rsaEncryption    OBJECT IDENTIFIER ::= { pkcs-1 1 }
 
 --
--- When id-RSAES-OAEP is used in an AlgorithmIdentifier the parameters MUST 
+-- When id-RSAES-OAEP is used in an PKCS1AlgorithmIdentifier the parameters MUST 
 -- be present and MUST be RSAES-OAEP-params.
 --
 id-RSAES-OAEP    OBJECT IDENTIFIER ::= { pkcs-1 7 }
 
 --
--- When id-pSpecified is used in an AlgorithmIdentifier the parameters MUST 
+-- When id-pSpecified is used in an PKCS1AlgorithmIdentifier the parameters MUST 
 -- be an OCTET STRING.
 --
 id-pSpecified    OBJECT IDENTIFIER ::= { pkcs-1 9 }
 
 --
--- When id-RSASSA-PSS is used in an AlgorithmIdentifier the parameters MUST 
+-- When id-RSASSA-PSS is used in an PKCS1AlgorithmIdentifier the parameters MUST 
 -- be present and MUST be RSASSA-PSS-params.
 --
 id-RSASSA-PSS    OBJECT IDENTIFIER ::= { pkcs-1 10 }
 
 --
--- When the following OIDs are used in an AlgorithmIdentifier the parameters 
+-- When the following OIDs are used in an PKCS1AlgorithmIdentifier the parameters 
 -- MUST be present and MUST be NULL.
 --
 md2WithRSAEncryption       OBJECT IDENTIFIER ::= { pkcs-1 2 }
@@ -90,7 +90,7 @@ id-md5 OBJECT IDENTIFIER ::= {
 }
 
 --
--- When id-mgf1 is used in an AlgorithmIdentifier the parameters MUST be 
+-- When id-mgf1 is used in an PKCS1AlgorithmIdentifier the parameters MUST be 
 -- present and MUST be a HashAlgorithm, for example sha1.
 --
 id-mgf1    OBJECT IDENTIFIER ::= { pkcs-1 8 }
@@ -115,7 +115,7 @@ ALGORITHM-IDENTIFIER ::= CLASS {
 -- }
 --
 
-AlgorithmIdentifier { ALGORITHM-IDENTIFIER:InfoObjectSet } ::= SEQUENCE {
+PKCS1AlgorithmIdentifier { ALGORITHM-IDENTIFIER:InfoObjectSet } ::= SEQUENCE {
     algorithm   
         ALGORITHM-IDENTIFIER.&id({InfoObjectSet}), 
     parameters  
@@ -139,7 +139,7 @@ sha1    HashAlgorithm ::= {
     parameters  SHA1Parameters : NULL
 }
 
-HashAlgorithm ::= AlgorithmIdentifier { {OAEP-PSSDigestAlgorithms} }
+HashAlgorithm ::= PKCS1AlgorithmIdentifier { {OAEP-PSSDigestAlgorithms} }
 
 SHA1Parameters ::= NULL
 
@@ -149,7 +149,7 @@ SHA1Parameters ::= NULL
 --
 
 --
--- Default AlgorithmIdentifier for id-RSAES-OAEP.maskGenAlgorithm and
+-- Default PKCS1AlgorithmIdentifier for id-RSAES-OAEP.maskGenAlgorithm and
 -- id-RSASSA-PSS.maskGenAlgorithm.
 --
 mgf1SHA1    MaskGenAlgorithm ::= {
@@ -157,7 +157,7 @@ mgf1SHA1    MaskGenAlgorithm ::= {
     parameters  HashAlgorithm : sha1
 }
 
-MaskGenAlgorithm ::= AlgorithmIdentifier { {PKCS1MGFAlgorithms} }
+MaskGenAlgorithm ::= PKCS1AlgorithmIdentifier { {PKCS1MGFAlgorithms} }
 
 --
 -- Allowed algorithms for pSourceAlgorithm.
@@ -175,7 +175,7 @@ pSpecifiedEmpty    PSourceAlgorithm ::= {
     parameters  EncodingParameters : emptyString
 }
 
-PSourceAlgorithm ::= AlgorithmIdentifier { {PKCS1PSourceAlgorithms} }
+PSourceAlgorithm ::= PKCS1AlgorithmIdentifier { {PKCS1PSourceAlgorithms} }
 
 --emptyString    EncodingParameters ::= ''H 
 
@@ -221,7 +221,7 @@ OtherPrimeInfo ::= SEQUENCE {
 }
 
 -- 
--- AlgorithmIdentifier.parameters for id-RSAES-OAEP.
+-- PKCS1AlgorithmIdentifier.parameters for id-RSAES-OAEP.
 -- Note that the tags in this Sequence are explicit.
 --
 RSAES-OAEP-params ::= SEQUENCE {
@@ -249,10 +249,10 @@ rSAES-OAEP-Default-Identifier    RSAES-AlgorithmIdentifier ::= {
     }
 }
 
-RSAES-AlgorithmIdentifier ::= AlgorithmIdentifier { {PKCS1Algorithms} }
+RSAES-AlgorithmIdentifier ::= PKCS1AlgorithmIdentifier { {PKCS1Algorithms} }
 
 -- 
--- AlgorithmIdentifier.parameters for id-RSASSA-PSS.
+-- PKCS1AlgorithmIdentifier.parameters for id-RSASSA-PSS.
 -- Note that the tags in this Sequence are explicit.
 --
 RSASSA-PSS-params ::= SEQUENCE {
@@ -283,7 +283,7 @@ rSASSA-PSS-Default-Identifier    RSASSA-AlgorithmIdentifier ::= {
     }
 }
 
-RSASSA-AlgorithmIdentifier ::= AlgorithmIdentifier { {PKCS1Algorithms} } 
+RSASSA-AlgorithmIdentifier ::= PKCS1AlgorithmIdentifier { {PKCS1Algorithms} } 
 
 --
 -- Syntax for the EMSA-PKCS1-v1_5 hash identifier.
@@ -293,6 +293,6 @@ DigestInfo ::= SEQUENCE {
     digest OCTET STRING 
 }
 
-DigestAlgorithm ::= AlgorithmIdentifier { {PKCS1-v1-5DigestAlgorithms} }
+DigestAlgorithm ::= PKCS1AlgorithmIdentifier { {PKCS1-v1-5DigestAlgorithms} }
 
 END  -- PKCS1Definitions

@@ -10,7 +10,7 @@ static asn_TYPE_member_t asn_MBR_DigestInfo_1[] = {
 	{ ATF_NOFLAGS, 0, offsetof(struct DigestInfo, digestAlgorithm),
 		(ASN_TAG_CLASS_UNIVERSAL | (16 << 2)),
 		0,
-		&asn_DEF_AlgorithmIdentifier_120P0,
+		&asn_DEF_PKCS1AlgorithmIdentifier_120P0,
 		0,	/* Defer constraints checking to the member type */
 		0,	/* PER is not compiled, use -gen-PER */
 		0,

@@ -11,14 +11,14 @@
 #include <asn_application.h>
 
 /* Including external dependencies */
-#include "AlgorithmIdentifier.h"
+#include "PKCS1AlgorithmIdentifier.h"
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
 /* RSASSA-AlgorithmIdentifier */
-typedef AlgorithmIdentifier_120P0_t	 RSASSA_AlgorithmIdentifier_t;
+typedef PKCS1AlgorithmIdentifier_120P0_t	 RSASSA_AlgorithmIdentifier_t;
 
 /* Implementation */
 extern asn_TYPE_descriptor_t asn_DEF_RSASSA_AlgorithmIdentifier;

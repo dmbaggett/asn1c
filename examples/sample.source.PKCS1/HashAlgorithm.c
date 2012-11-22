@@ -10,29 +10,29 @@ int
 HashAlgorithm_constraint(asn_TYPE_descriptor_t *td, const void *sptr,
 			asn_app_constraint_failed_f *ctfailcb, void *app_key) {
 	/* Replace with underlying type checker */
-	td->check_constraints = asn_DEF_AlgorithmIdentifier_120P0.check_constraints;
+	td->check_constraints = asn_DEF_PKCS1AlgorithmIdentifier_120P0.check_constraints;
 	return td->check_constraints(td, sptr, ctfailcb, app_key);
 }
 
 /*
- * This type is implemented using AlgorithmIdentifier_120P0,
+ * This type is implemented using PKCS1AlgorithmIdentifier_120P0,
  * so here we adjust the DEF accordingly.
  */
 static void
 HashAlgorithm_1_inherit_TYPE_descriptor(asn_TYPE_descriptor_t *td) {
-	td->free_struct    = asn_DEF_AlgorithmIdentifier_120P0.free_struct;
-	td->print_struct   = asn_DEF_AlgorithmIdentifier_120P0.print_struct;
-	td->ber_decoder    = asn_DEF_AlgorithmIdentifier_120P0.ber_decoder;
-	td->der_encoder    = asn_DEF_AlgorithmIdentifier_120P0.der_encoder;
-	td->xer_decoder    = asn_DEF_AlgorithmIdentifier_120P0.xer_decoder;
-	td->xer_encoder    = asn_DEF_AlgorithmIdentifier_120P0.xer_encoder;
-	td->uper_decoder   = asn_DEF_AlgorithmIdentifier_120P0.uper_decoder;
-	td->uper_encoder   = asn_DEF_AlgorithmIdentifier_120P0.uper_encoder;
+	td->free_struct    = asn_DEF_PKCS1AlgorithmIdentifier_120P0.free_struct;
+	td->print_struct   = asn_DEF_PKCS1AlgorithmIdentifier_120P0.print_struct;
+	td->ber_decoder    = asn_DEF_PKCS1AlgorithmIdentifier_120P0.ber_decoder;
+	td->der_encoder    = asn_DEF_PKCS1AlgorithmIdentifier_120P0.der_encoder;
+	td->xer_decoder    = asn_DEF_PKCS1AlgorithmIdentifier_120P0.xer_decoder;
+	td->xer_encoder    = asn_DEF_PKCS1AlgorithmIdentifier_120P0.xer_encoder;
+	td->uper_decoder   = asn_DEF_PKCS1AlgorithmIdentifier_120P0.uper_decoder;
+	td->uper_encoder   = asn_DEF_PKCS1AlgorithmIdentifier_120P0.uper_encoder;
 	if(!td->per_constraints)
-		td->per_constraints = asn_DEF_AlgorithmIdentifier_120P0.per_constraints;
-	td->elements       = asn_DEF_AlgorithmIdentifier_120P0.elements;
-	td->elements_count = asn_DEF_AlgorithmIdentifier_120P0.elements_count;
-	td->specifics      = asn_DEF_AlgorithmIdentifier_120P0.specifics;
+		td->per_constraints = asn_DEF_PKCS1AlgorithmIdentifier_120P0.per_constraints;
+	td->elements       = asn_DEF_PKCS1AlgorithmIdentifier_120P0.elements;
+	td->elements_count = asn_DEF_PKCS1AlgorithmIdentifier_120P0.elements_count;
+	td->specifics      = asn_DEF_PKCS1AlgorithmIdentifier_120P0.specifics;
 }
 
 void

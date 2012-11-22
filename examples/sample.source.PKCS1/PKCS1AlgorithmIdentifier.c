@@ -4,7 +4,7 @@
  * 	found in "../pkcs-1v2-1-modified.asn"
  */
 
-#include "AlgorithmIdentifier.h"
+#include "PKCS1AlgorithmIdentifier.h"
 
 static int
 memb_algorithm_constraint_1(asn_TYPE_descriptor_t *td, const void *sptr,
@@ -44,8 +44,8 @@ memb_parameters_constraint_1(asn_TYPE_descriptor_t *td, const void *sptr,
 	return td->check_constraints(td, sptr, ctfailcb, app_key);
 }
 
-static asn_TYPE_member_t asn_MBR_AlgorithmIdentifier_120P0_1[] = {
-	{ ATF_NOFLAGS, 0, offsetof(struct AlgorithmIdentifier_120P0, algorithm),
+static asn_TYPE_member_t asn_MBR_PKCS1AlgorithmIdentifier_120P0_1[] = {
+	{ ATF_NOFLAGS, 0, offsetof(struct PKCS1AlgorithmIdentifier_120P0, algorithm),
 		(ASN_TAG_CLASS_UNIVERSAL | (6 << 2)),
 		0,
 		&asn_DEF_OBJECT_IDENTIFIER,
@@ -54,7 +54,7 @@ static asn_TYPE_member_t asn_MBR_AlgorithmIdentifier_120P0_1[] = {
 		0,
 		"algorithm"
 		},
-	{ ATF_OPEN_TYPE | ATF_POINTER, 1, offsetof(struct AlgorithmIdentifier_120P0, parameters),
+	{ ATF_OPEN_TYPE | ATF_POINTER, 1, offsetof(struct PKCS1AlgorithmIdentifier_120P0, parameters),
 		-1 /* Ambiguous tag (ANY?) */,
 		0,
 		&asn_DEF_ANY,
@@ -64,24 +64,24 @@ static asn_TYPE_member_t asn_MBR_AlgorithmIdentifier_120P0_1[] = {
 		"parameters"
 		},
 };
-static ber_tlv_tag_t asn_DEF_AlgorithmIdentifier_120P0_tags_1[] = {
+static ber_tlv_tag_t asn_DEF_PKCS1AlgorithmIdentifier_120P0_tags_1[] = {
 	(ASN_TAG_CLASS_UNIVERSAL | (16 << 2))
 };
-static asn_TYPE_tag2member_t asn_MAP_AlgorithmIdentifier_120P0_tag2el_1[] = {
+static asn_TYPE_tag2member_t asn_MAP_PKCS1AlgorithmIdentifier_120P0_tag2el_1[] = {
     { (ASN_TAG_CLASS_UNIVERSAL | (6 << 2)), 0, 0, 0 } /* algorithm at 120 */
 };
-static asn_SEQUENCE_specifics_t asn_SPC_AlgorithmIdentifier_120P0_specs_1 = {
-	sizeof(struct AlgorithmIdentifier_120P0),
-	offsetof(struct AlgorithmIdentifier_120P0, _asn_ctx),
-	asn_MAP_AlgorithmIdentifier_120P0_tag2el_1,
+static asn_SEQUENCE_specifics_t asn_SPC_PKCS1AlgorithmIdentifier_120P0_specs_1 = {
+	sizeof(struct PKCS1AlgorithmIdentifier_120P0),
+	offsetof(struct PKCS1AlgorithmIdentifier_120P0, _asn_ctx),
+	asn_MAP_PKCS1AlgorithmIdentifier_120P0_tag2el_1,
 	1,	/* Count of tags in the map */
 	0, 0, 0,	/* Optional elements (not needed) */
 	-1,	/* Start extensions */
 	-1	/* Stop extensions */
 };
-asn_TYPE_descriptor_t asn_DEF_AlgorithmIdentifier_120P0 = {
-	"AlgorithmIdentifier",
-	"AlgorithmIdentifier",
+asn_TYPE_descriptor_t asn_DEF_PKCS1AlgorithmIdentifier_120P0 = {
+	"PKCS1AlgorithmIdentifier",
+	"PKCS1AlgorithmIdentifier",
 	SEQUENCE_free,
 	SEQUENCE_print,
 	SEQUENCE_constraint,
@@ -91,15 +91,15 @@ asn_TYPE_descriptor_t asn_DEF_AlgorithmIdentifier_120P0 = {
 	SEQUENCE_encode_xer,
 	0, 0,	/* No PER support, use "-gen-PER" to enable */
 	0,	/* Use generic outmost tag fetcher */
-	asn_DEF_AlgorithmIdentifier_120P0_tags_1,
-	sizeof(asn_DEF_AlgorithmIdentifier_120P0_tags_1)
-		/sizeof(asn_DEF_AlgorithmIdentifier_120P0_tags_1[0]), /* 1 */
-	asn_DEF_AlgorithmIdentifier_120P0_tags_1,	/* Same as above */
-	sizeof(asn_DEF_AlgorithmIdentifier_120P0_tags_1)
-		/sizeof(asn_DEF_AlgorithmIdentifier_120P0_tags_1[0]), /* 1 */
+	asn_DEF_PKCS1AlgorithmIdentifier_120P0_tags_1,
+	sizeof(asn_DEF_PKCS1AlgorithmIdentifier_120P0_tags_1)
+		/sizeof(asn_DEF_PKCS1AlgorithmIdentifier_120P0_tags_1[0]), /* 1 */
+	asn_DEF_PKCS1AlgorithmIdentifier_120P0_tags_1,	/* Same as above */
+	sizeof(asn_DEF_PKCS1AlgorithmIdentifier_120P0_tags_1)
+		/sizeof(asn_DEF_PKCS1AlgorithmIdentifier_120P0_tags_1[0]), /* 1 */
 	0,	/* No PER visible constraints */
-	asn_MBR_AlgorithmIdentifier_120P0_1,
+	asn_MBR_PKCS1AlgorithmIdentifier_120P0_1,
 	2,	/* Elements count */
-	&asn_SPC_AlgorithmIdentifier_120P0_specs_1	/* Additional specs */
+	&asn_SPC_PKCS1AlgorithmIdentifier_120P0_specs_1	/* Additional specs */
 };
 

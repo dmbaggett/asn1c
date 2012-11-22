@@ -1,3 +1,9 @@
+#
+# Use asn1c to generate C code from the PKCS1 v2.1 spec.
+#
+# NOTE: you must use a modified spec that removes all the | operators
+# and renames AlgorithmIdentifier! The stock spec WILL NOT work.
+#
 all: ../pkcs-1v2-1-modified.asn
 	../../asn1c/asn1c ../pkcs-1v2-1-modified.asn
 	# Remove files that won't compile:

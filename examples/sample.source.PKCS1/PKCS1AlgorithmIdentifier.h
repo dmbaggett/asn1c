@@ -4,8 +4,8 @@
  * 	found in "../pkcs-1v2-1-modified.asn"
  */
 
-#ifndef	_AlgorithmIdentifier_H_
-#define	_AlgorithmIdentifier_H_
+#ifndef	_PKCS1AlgorithmIdentifier_H_
+#define	_PKCS1AlgorithmIdentifier_H_
 
 
 #include <asn_application.h>
@@ -19,21 +19,21 @@
 extern "C" {
 #endif
 
-/* AlgorithmIdentifier */
-typedef struct AlgorithmIdentifier_120P0 {
+/* PKCS1AlgorithmIdentifier */
+typedef struct PKCS1AlgorithmIdentifier_120P0 {
 	OBJECT_IDENTIFIER_t	 algorithm;
 	ANY_t	 parameters;
 	
 	/* Context for parsing across buffer boundaries */
 	asn_struct_ctx_t _asn_ctx;
-} AlgorithmIdentifier_120P0_t;
+} PKCS1AlgorithmIdentifier_120P0_t;
 
 /* Implementation */
-extern asn_TYPE_descriptor_t asn_DEF_AlgorithmIdentifier_120P0;
+extern asn_TYPE_descriptor_t asn_DEF_PKCS1AlgorithmIdentifier_120P0;
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif	/* _AlgorithmIdentifier_H_ */
+#endif	/* _PKCS1AlgorithmIdentifier_H_ */
 #include <asn_internal.h>

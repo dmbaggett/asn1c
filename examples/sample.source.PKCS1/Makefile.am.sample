@@ -1,5 +1,5 @@
 ASN_MODULE_SOURCES=	\
-	AlgorithmIdentifier.c	\
+	PKCS1AlgorithmIdentifier.c	\
 	HashAlgorithm.c	\
 	SHA1Parameters.c	\
 	MaskGenAlgorithm.c	\
@@ -19,7 +19,7 @@ ASN_MODULE_SOURCES=	\
 	DigestAlgorithm.c
 
 ASN_MODULE_HEADERS=	\
-	AlgorithmIdentifier.h	\
+	PKCS1AlgorithmIdentifier.h	\
 	HashAlgorithm.h	\
 	SHA1Parameters.h	\
 	MaskGenAlgorithm.h	\
