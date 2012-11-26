@@ -14,8 +14,11 @@
 #include <time.h>
 #endif	/* __CYGWIN__ */
 
+/*
+ * ARCODE: Unfortunately, time.h conflicts with our Time.h, so on case-insensitive filesystems we can't
+ * easily include the real time.h. Instead, we define some things we need from it here. - brb
+ */
 #ifdef __APPLE__
-/* ARCODE: I have no idea why this is necessary; without it, the compiler doesn't know sizeof(struct tm) -- dmb */
 struct tm {
 	int	tm_sec;		/* seconds after the minute [0-60] */
 	int	tm_min;		/* minutes after the hour [0-59] */
@@ -29,6 +32,76 @@ struct tm {
 	long	tm_gmtoff;	/* offset from CUT in seconds */
 	char	*tm_zone;	/* timezone abbreviation */
 };
+#endif
+#ifdef _WIN32
+struct tm {
+        int tm_sec;     /* seconds after the minute - [0,59] */
+        int tm_min;     /* minutes after the hour - [0,59] */
+        int tm_hour;    /* hours since midnight - [0,23] */
+        int tm_mday;    /* day of the month - [1,31] */
+        int tm_mon;     /* months since January - [0,11] */
+        int tm_year;    /* years since 1900 */
+        int tm_wday;    /* days since Sunday - [0,6] */
+        int tm_yday;    /* days since January 1 - [0,365] */
+        int tm_isdst;   /* daylight savings time flag */
+};
+
+extern struct tm *_localtime64(const __time64_t *_ltime);
+extern struct tm *_gmtime64(const __time64_t *_gmtime);
+extern __time64_t _mktime64(struct tm *_tm);
+extern __time64_t _time64(__time64_t *_dtime);
+
+static inline struct tm *localtime(const time_t *_ltime) {
+        return _localtime64(_ltime);
+}
+
+static inline struct tm *gmtime(const time_t *_gmtime) {
+        return _gmtime64(_gmtime);
+}
+
+static inline time_t mktime(struct tm *_tm) {
+        return _mktime64(_tm);
+}
+
+static inline time_t time(time_t *_dtime) {
+        return _time64(_dtime);
+}
+
+extern void _tzset(void);
+#endif
+
+/*
+ * ARCODE: Function that don't exist natively on Windows. - brb
+ */
+#ifdef WIN32
+int setenv(const char *name, const char *value, int overwrite) {
+    size_t len;
+    char *tmp;
+    int ret;
+
+    if (!overwrite && getenv(name) != NULL) {
+        return 0;
+    }
+
+    len = strlen(name) + 1 + strlen(value) + 1;
+    tmp = (char *)malloc(len);
+
+    if (_snprintf(tmp, len, "%s=%s", name, value) < 0) {
+        free(tmp);
+        return -1;
+    }
+    tmp[len-1] = '\0';
+
+    ret = _putenv(tmp);
+
+    free(tmp);
+
+    return ret;
+}
+
+int unsetenv(const char *name) {
+    setenv(name, "", 1);
+}
 #endif
 
 #if	defined(_WIN32)
@@ -85,18 +158,18 @@ static struct tm *gmtime_r(const time_t *tloc, struct tm *result) {
 #endif	/* HAVE_TM_GMTOFF */
 
 #if	(defined(_EMULATE_TIMEGM) || !defined(HAVE_TM_GMTOFF))
-#warning "PLEASE STOP AND READ!"
-#warning "  timegm() is implemented via getenv(\"TZ\")/setenv(\"TZ\"), which may be not thread-safe."
-#warning "  "
-#warning "  You must fix the code by inserting appropriate locking"
-#warning "  if you want to use asn_GT2time() or asn_UT2time()."
-#warning "PLEASE STOP AND READ!"
+#pragma message("PLEASE STOP AND READ!")
+#pragma message("  timegm() is implemented via getenv(\"TZ\")/setenv(\"TZ\"), which may be not thread-safe.")
+#pragma message("  ")
+#pragma message("  You must fix the code by inserting appropriate locking")
+#pragma message("  if you want to use asn_GT2time() or asn_UT2time().")
+#pragma message("PLEASE STOP AND READ!")
 #endif	/* _EMULATE_TIMEGM */
 
 /*
  * Override our GMTOFF decision for other known platforms.
  */
-#ifdef __CYGWIN__
+#if defined(__CYGWIN__) || defined(WIN32)
 #undef	GMTOFF
 static long GMTOFF(struct tm a){
 	struct tm *lt;
@@ -109,7 +182,7 @@ static long GMTOFF(struct tm a){
 	lt = gmtime(&gmt_time);
 
 	local_time = mktime(lt);
-	return (gmt_time - local_time);
+	return (long)(gmt_time - local_time);
 }
 #define	_EMULATE_TIMEGM
 
