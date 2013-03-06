@@ -13,8 +13,11 @@
 #include <time.h>
 #endif	/* __CYGWIN__ */
 
+/*
+ * Unfortunately, time.h conflicts with our Time.h, so on case-insensitive filesystems we can't
+ * easily include the real time.h. Instead, we define some things we need from it here. - brb
+ */
 #ifdef __APPLE__
-/* ARCODE: I have no idea why this is necessary; without it, the compiler doesn't know sizeof(struct tm) -- dmb */
 struct tm {
 	int	tm_sec;		/* seconds after the minute [0-60] */
 	int	tm_min;		/* minutes after the hour [0-59] */
@@ -42,8 +45,6 @@ struct tm {
         int tm_isdst;   /* daylight savings time flag */
 };
 #endif
-
-#ifndef	__ASN_INTERNAL_TEST_MODE__
 
 /*
  * UTCTime basic type description.

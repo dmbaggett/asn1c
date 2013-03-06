@@ -15,7 +15,7 @@
 #endif	/* __CYGWIN__ */
 
 /*
- * ARCODE: Unfortunately, time.h conflicts with our Time.h, so on case-insensitive filesystems we can't
+ * Unfortunately, time.h conflicts with our Time.h, so on case-insensitive filesystems we can't
  * easily include the real time.h. Instead, we define some things we need from it here. - brb
  */
 #ifdef __APPLE__
@@ -104,6 +104,8 @@ int unsetenv(const char *name) {
 }
 #endif
 
+=======
+>>>>>>> b85507a1eb549df1959b43a38840d7d3e2c5294e
 #if	defined(_WIN32)
 #pragma message( "PLEASE STOP AND READ!")
 #pragma message( "  localtime_r is implemented via localtime(), which may be not thread-safe.")
@@ -158,18 +160,31 @@ static struct tm *gmtime_r(const time_t *tloc, struct tm *result) {
 #endif	/* HAVE_TM_GMTOFF */
 
 #if	(defined(_EMULATE_TIMEGM) || !defined(HAVE_TM_GMTOFF))
+<<<<<<< HEAD
 #pragma message("PLEASE STOP AND READ!")
 #pragma message("  timegm() is implemented via getenv(\"TZ\")/setenv(\"TZ\"), which may be not thread-safe.")
 #pragma message("  ")
 #pragma message("  You must fix the code by inserting appropriate locking")
 #pragma message("  if you want to use asn_GT2time() or asn_UT2time().")
 #pragma message("PLEASE STOP AND READ!")
+=======
+#warning "PLEASE STOP AND READ!"
+#warning "  timegm() is implemented via getenv(\"TZ\")/setenv(\"TZ\"), which may be not thread-safe."
+#warning "  "
+#warning "  You must fix the code by inserting appropriate locking"
+#warning "  if you want to use asn_GT2time() or asn_UT2time()."
+#warning "PLEASE STOP AND READ!"
+>>>>>>> b85507a1eb549df1959b43a38840d7d3e2c5294e
 #endif	/* _EMULATE_TIMEGM */
 
 /*
  * Override our GMTOFF decision for other known platforms.
  */
+<<<<<<< HEAD
 #if defined(__CYGWIN__) || defined(WIN32)
+=======
+#ifdef __CYGWIN__
+>>>>>>> b85507a1eb549df1959b43a38840d7d3e2c5294e
 #undef	GMTOFF
 static long GMTOFF(struct tm a){
 	struct tm *lt;
@@ -182,7 +197,11 @@ static long GMTOFF(struct tm a){
 	lt = gmtime(&gmt_time);
 
 	local_time = mktime(lt);
+<<<<<<< HEAD
 	return (long)(gmt_time - local_time);
+=======
+	return (gmt_time - local_time);
+>>>>>>> b85507a1eb549df1959b43a38840d7d3e2c5294e
 }
 #define	_EMULATE_TIMEGM
 

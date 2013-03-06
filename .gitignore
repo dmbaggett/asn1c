@@ -50,6 +50,8 @@ doc/docsrc/*.xdv
 /examples/*.asn1
 
 # /examples/*/
+/examples/*/*.c
+/examples/*/*.h
 /examples/*/*dump
 /examples/*/.tmp.*
 
