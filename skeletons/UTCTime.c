@@ -46,6 +46,7 @@ struct tm {
 };
 #endif
 
+#ifndef	__ASN_INTERNAL_TEST_MODE__
 /*
  * UTCTime basic type description.
  */
